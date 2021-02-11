@@ -1,0 +1,18 @@
+// MEDIA QUERIES
+
+@mixin tablet {
+  @media all and (min-width: $tablet) {
+    @content;
+  }
+}
+
+// CARD STYLES
+
+@mixin card-style {
+  background-color: $main-color;
+  font-family: $primary-font;
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0px 3px 20px -5px $shadow-color;
+  color: $text-color;
+}

@@ -1,0 +1,91 @@
+@import '../core/reset';
+@import '../core/variables';
+@import '../core/mixins';
+
+.detail {
+  height: 90vh;
+  margin-top: 125px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__card {
+    @include card-style;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    cursor: default;
+    &__icon {
+      width: 45px;
+      height: 45px;
+      z-index: 1;
+      align-self: center;
+      order: 1;
+      margin-bottom: 15px;
+    }
+    &__img {
+      margin-top: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 250px;
+      height: 250px;
+      object-fit: fill;
+      img {
+        width: 100%;
+      }
+    }
+    &__info {
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      &__link {
+        color: $secondary-color;
+        font-weight: bold;
+        order: 2;
+        text-transform: uppercase;
+        &:active {
+          text-shadow: 0.5px 0.5px 1px $text-color;
+        }
+      }
+      &__content {
+        font-size: 13px;
+        margin: 10px;
+
+        h3,
+        p {
+          padding-bottom: 10px;
+        }
+        &__title {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  @include tablet {
+    &__card {
+      flex-direction: row;
+      align-items: normal;
+      &__img {
+        margin-top: 0;
+      }
+      &__icon {
+        align-self: flex-end;
+        order: -1;
+        margin-bottom: 0;
+      }
+      &__info {
+        &__link {
+          order: -2;
+          align-self: flex-end;
+        }
+      }
+      &__content {
+        margin: 0;
+      }
+    }
+  }
+}

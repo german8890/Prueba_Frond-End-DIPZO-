@@ -1,0 +1,278 @@
+// MEDIA QUERIES
+
+
+  
+  //FONT
+$primary-font: 'Orbitron', sans-serif;
+
+//COLOR
+$text-color: rgb(233, 233, 233);
+$main-color: rgb(35, 32, 75);
+$secondary-color: #63abb6;
+$secondary-color-low-opacity: #54a0ac42;
+$tertiary-color: #53b81f;
+$shadow-color: rgba(158, 158, 158, 1);
+
+//BREAKPOINTS
+$tablet: 768px;
+  // CARD STYLES
+  
+  @mixin card-body {
+    background-color: $main-color;
+    font-family: $primary-font;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0px 3px 20px -5px $shadow-color;
+    color: $text-color;
+  }
+
+@import 'src/stylesheets/core/reset';
+@import 'src/stylesheets/core/variables';
+@import 'src/stylesheets/core/mixins.scss';
+@import 'src/stylesheets/layout/footer.scss';
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  background-color: $secondary-color;
+  width: 100%;
+  height: 100px;
+  font-family: $primary-font;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 200px;
+  }
+  @include tablet {
+    align-items: flex-start;
+    padding-left: 50px;
+  }
+}
+
+.article {
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  @include card-style;
+
+  &__icon {
+    width: 45px;
+    height: 45px;
+    z-index: 1;
+    align-self: flex-end;
+  }
+  &__img {
+    width: 100%;
+    clip-path: circle(70% at 50% 25%);
+    margin-top: -55px;
+  }
+  &__name {
+    height: 50px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    h2 {
+      font-size: 20px;
+    }
+  }
+  &__species {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    span {
+      font-size: 13px;
+      display: block;
+      margin-top: 5px;
+      font-weight: normal;
+    }
+  }
+  &__button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+
+    div {
+      background: {
+        image: url('/src/img/spiral.png');
+        size: cover;
+      }
+      height: 60px;
+      width: 70px;
+    }
+    p {
+      font-size: 12px;
+      margin: 10px;
+    }
+  }
+  &:active {
+    box-shadow: 0px 3px 20px 1px $tertiary-color;
+  }
+}
+
+.footer {
+  background-color: $secondary-color-low-opacity;
+  padding: 10px 10px;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  @include card-style;
+}
+
+
+.detail {
+    height: 90vh;
+    margin-top: 125px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__card {
+      @include card-style;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 15px;
+      cursor: default;
+      &__icon {
+        width: 45px;
+        height: 45px;
+        z-index: 1;
+        align-self: center;
+        order: 1;
+        margin-bottom: 15px;
+      }
+      &__img {
+        margin-top: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        width: 250px;
+        height: 250px;
+        object-fit: fill;
+        img {
+          width: 100%;
+        }
+      }
+      &__info {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        &__link {
+          color: $secondary-color;
+          font-weight: bold;
+          order: 2;
+          text-transform: uppercase;
+          &:active {
+            text-shadow: 0.5px 0.5px 1px $text-color;
+          }
+        }
+        &__content {
+          font-size: 13px;
+          margin: 10px;
+  
+          h3,
+          p {
+            padding-bottom: 10px;
+          }
+          &__title {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    @include tablet {
+      &__card {
+        flex-direction: row;
+        align-items: normal;
+        &__img {
+          margin-top: 0;
+        }
+        &__icon {
+          align-self: flex-end;
+          order: -1;
+          margin-bottom: 0;
+        }
+        &__info {
+          &__link {
+            order: -2;
+            align-self: flex-end;
+          }
+        }
+        &__content {
+          margin: 0;
+        }
+      }
+    }
+  }
+  .filters {
+    background-color: $secondary-color;
+    position: fixed;
+    top: 70px;
+    width: 100%;
+    right: 0;
+    z-index: 3;
+    padding-right: 50px;
+    height: 200px;
+    font-family: $primary-font;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    &__label {
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      color: $main-color;
+    }
+    &__name {
+      font-size: 13px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    &__input {
+      width: 120px;
+      padding: 3px 10px;
+      background-color: $main-color;
+      color: $text-color;
+      border: 6px solid transparent;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+    &__button {
+      cursor: pointer;
+      padding: 0;
+      font-size: 20px;
+      width: 30px;
+      height: 31px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @include tablet {
+      top: 0;
+      background-color: transparent;
+      width: auto;
+      height: 100px;
+      flex-wrap: nowrap;
+    }
+
+}
